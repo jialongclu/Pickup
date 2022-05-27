@@ -27,8 +27,7 @@ Design profile view
 Create swiping functionality
 Store swipes/matches in database 
 Simple algorithm to filter out people you’ve rejected
+
+Mocks: 
 <img width="9504" alt="Pickup" src="https://user-images.githubusercontent.com/74952538/170615741-06dd51e8-254f-4075-a657-1529e40f8b3c.png">
-<img width="9504" alt="Pickup" src="https://user-images.githubusercontent.com/74952538/170615773-5bce2a42-0339-4feb-bb65-0da7768a9a83.png">
-
-
-
+<img width="8544" alt="Pickup copy" src="https://user-images.githubusercontent.com/74952538/170615875-65536a66-12b2-4a46-ac06-7a046b56f4e2.png">
