@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 const settings = ['Profile', 'Logout'];
 
 const NavBar = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
