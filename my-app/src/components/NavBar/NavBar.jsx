@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 const settings = ['Profile', 'Logout'];
 
 const NavBar = () => {
-const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
