@@ -1,6 +1,17 @@
 .matchingScreen {
-    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
+
+  .matchingCardsContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20vh;
+    width: auto;
+  }
+  
+  .swipe {
+    position: absolute;
+  }
+  
