@@ -1,3 +1,4 @@
+import React from 'react';
 import MatchingCard from '../../components/MatchingCard';
 import './MatchingScreen.css';
 
