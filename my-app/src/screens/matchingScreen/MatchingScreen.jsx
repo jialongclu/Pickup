@@ -1,6 +1,7 @@
 // Starter Code - https://github.com/3DJakob/react-tinder-card-demo/blob/master/src/examples/Advanced.js
 import Tindercard from "react-tinder-card";
 import MatchingCard from '../../components/MatchingCard';
+import FilterBar from '../../components/FilterBar';
 import './MatchingScreen.css';
 import { selectAllUsers } from "../../redux/users/reducer";
 import { useSelector } from "react-redux";
@@ -55,6 +56,7 @@ function MatchingScreen() {
     
     return (
         <div className="matchingScreen">
+          <FilterBar />
           <div className="matchingCardsContainer">
             {users.map((user,index) => (
               <Tindercard
