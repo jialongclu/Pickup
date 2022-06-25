@@ -11,6 +11,7 @@ import ProfilePicture from './testProfilePic.jpg';
 import { CheckCircleOutline, HighlightOff } from '@mui/icons-material';
 
 function MatchingCard({ name, height, age, level, intro }) {
+
     return (
         <Card variant="outlined" className="matchingCard">
             <div className="userInfo">
