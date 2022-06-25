@@ -5,13 +5,13 @@
 }
 
   .matchingCardsContainer {
+    position:relative;
     display: flex;
     justify-content: center;
     margin: 20vh;
     width: auto;
   }
-  
+
   .swipe {
     position: absolute;
   }
-  

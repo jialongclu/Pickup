@@ -47,10 +47,10 @@ function MatchingCard(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <IconButton aria-label="Reject" >
+                <IconButton aria-label="Reject"  onClick={()=> props.swipe('left')}>
                     <HighlightOff />
                 </IconButton>
-                <IconButton aria-label="Accept">
+                <IconButton aria-label="Accept" onClick={() => props.swipe('right')}>
                     <CheckCircleOutline />
                 </IconButton>
             </CardActions>
