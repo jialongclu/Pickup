@@ -40,5 +40,6 @@ const usersSlice = createSlice({
   }
 });
 
+export const selectAllUsers = (state) => state.users.list;
 export const { removeUser } = usersSlice.actions;
 export default usersSlice.reducer;
