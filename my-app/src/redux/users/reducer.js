@@ -1,45 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getUsersAsync, getUserAsync } from './thunks';
 
-const MOCK_USERS = [
-  {
-    firstName: 'Shubh',
-    lastName: 'Mittal',
-    skillLevel: 'Intermediate',
-    age: 21,
-    height: '180cm',
-    gender: 'Male'
-  },
-  {
-    firstName: 'Jialong',
-    lastName: 'Lu',
-    skillLevel: 'Beginner',
-    age: 22,
-    height: '177cm',
-    gender: 'Male'
-  },
-  {
-    firstName: 'Lebron',
-    lastName: 'James',
-    skillLevel: 'Advanced',
-    age: 40,
-    height: '190cm',
-    gender: 'Male'
-  }
-]
+const REQUEST_STATE = {
+  IDLE: 'IDLE',
+  PENDING: 'PENDING',
+  FULFILLED: 'FULFILLED',
+  REJECTED: 'REJECTED'
+};
+
 const INITIAL_STATE = {
-    list: MOCK_USERS
+  list: [],
+  getUsersAsync: REQUEST_STATE.IDLE,
+  getUserAsync: REQUEST_STATE.IDLE,
 };
 
 const usersSlice = createSlice({
   name: 'users',
   initialState: INITIAL_STATE,
-  reducers: {
-    removeUser: (state, action) => {
-      state.users = state.users.filter((user) => user.id !== action.payload)
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getUsersAsync.pending, (state) => {
+        state.getRecipesList = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(getUsersAsync.fulfilled, (state, action) => {
+        state.getRecipesList = REQUEST_STATE.FULFILLED;
+        state.list = action.payload;
+      })
+      .addCase(getUsersAsync.rejected, (state, action) => {
+        state.getRecipesList = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      })
+      .addCase(getUserAsync.pending, (state) => {
+        state.getRecipesList = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(getUserAsync.fulfilled, (state, action) => {
+        state.getRecipesList = REQUEST_STATE.FULFILLED;
+        state.user = action.payload;
+      })
+      .addCase(getUserAsync.rejected, (state, action) => {
+        state.getRecipesList = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      })
   }
 });
 
-export const selectAllUsers = (state) => state.users.list;
-export const { removeUser } = usersSlice.actions;
 export default usersSlice.reducer;

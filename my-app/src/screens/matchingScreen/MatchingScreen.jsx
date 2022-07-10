@@ -3,17 +3,23 @@ import Tindercard from "react-tinder-card";
 import MatchingCard from '../../components/MatchingCard';
 import FilterBar from '../../components/FilterBar';
 import './MatchingScreen.css';
-import { selectAllUsers } from "../../redux/users/reducer";
-import { useSelector } from "react-redux";
-import React, { useState, useMemo,useRef } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useMemo,useRef, useEffect } from 'react';
+import { getUsersAsync } from "../../redux/users/thunks";
 
 
 function MatchingScreen() {
 
-    const users = useSelector(selectAllUsers);
+    const users = useSelector((state) => state.users.list);
 
     const [currentIndex, setCurrentIndex] = useState(users.length - 1)
     const [lastDirection, setLastDirection] = useState()
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getUsersAsync());
+    }, []);
   
     const currentIndexRef = useRef(currentIndex)
   

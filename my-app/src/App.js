@@ -4,8 +4,17 @@ import SignUp from './components/SignUp/SignUp.jsx'
 import SignIn from "./components/SignIn/SignIn.jsx";
 import "./App.css"
 import NavBar from './components/NavBar';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUserAsync } from './redux/users/thunks.js';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserAsync(2));
+  }, [])
+
   return (
     <>
     <NavBar />
