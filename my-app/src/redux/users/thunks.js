@@ -15,3 +15,10 @@ export const getUserAsync = createAsyncThunk(
     return await UsersService.getUser(id);
   }
 );
+
+export const updateUserAsync = createAsyncThunk(
+  actionTypes.UPDATE_USER,
+  async ({id, updatedFields}) => {
+    return await UsersService.updateUser({id, updatedFields});
+  }
+);

@@ -51,4 +51,15 @@ router.get('/:id', function(req, res, next) {
   res.send(user);
 });
 
+router.patch('/:id', function(req, res, next) {
+  const { id } = req.params;
+  const updatedFields = req.body;
+  const userIndex = MOCK_USERS.findIndex((user) => user.id === id);
+  console.log(updatedFields)
+  Object.keys(updatedFields).forEach((field) => {
+    MOCK_USERS[userIndex][field] = updatedFields[field]
+  })
+  res.send(MOCK_USERS[userIndex]);
+});
+
 module.exports = router;
