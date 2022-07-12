@@ -38,7 +38,7 @@ const usersSlice = createSlice({
       })
       .addCase(getUserAsync.fulfilled, (state, action) => {
         state.getRecipesList = REQUEST_STATE.FULFILLED;
-        state.user = action.payload;
+        state.user = { ...action.payload, id: action.payload._id };
       })
       .addCase(getUserAsync.rejected, (state, action) => {
         state.getRecipesList = REQUEST_STATE.REJECTED;
@@ -50,7 +50,7 @@ const usersSlice = createSlice({
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
         state.getRecipesList = REQUEST_STATE.FULFILLED;
-        state.user = action.payload;
+        state.user = { ...action.payload, id: action.payload._id };
       })
       .addCase(updateUserAsync.rejected, (state, action) => {
         state.getRecipesList = REQUEST_STATE.REJECTED;

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const { getUsers, editUserProfile, getUserProfile } = require('../../src/database/index.js')
+
 
 const MOCK_USERS = [
   {
@@ -41,25 +43,19 @@ const MOCK_USERS = [
 ]
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send(MOCK_USERS);
+router.get('/', function (req, res, next) {
+  getUsers().then((resp) => res.send(resp))
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function (req, res, next) {
   const { id } = req.params;
-  const user = MOCK_USERS.find((user) => user.id === id);
-  res.send(user);
+  getUserProfile(id).then((resp) => res.send(resp));
 });
 
-router.patch('/:id', function(req, res, next) {
+router.patch('/:id', function (req, res, next) {
   const { id } = req.params;
   const updatedFields = req.body;
-  const userIndex = MOCK_USERS.findIndex((user) => user.id === id);
-  console.log(updatedFields)
-  Object.keys(updatedFields).forEach((field) => {
-    MOCK_USERS[userIndex][field] = updatedFields[field]
-  })
-  res.send(MOCK_USERS[userIndex]);
+  editUserProfile({ id, updatedFields }).then((resp) => res.send(resp));
 });
 
 module.exports = router;

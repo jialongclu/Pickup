@@ -13,22 +13,22 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserAsync(2));
+    dispatch(getUserAsync('62cce16fbbd30b718df04804'));
   }, [])
 
   return (
     <>
-    <NavBar />
-    <div className="App">
+      <NavBar />
+      <div className="App">
         <Router>
           <Routes>
             <Route path="/matchingScreen" element={<MatchingScreen />} />
-            <Route path="/signUp" element={<SignUp />}/>
-            <Route path="/signIn" element={<SignIn />}/>
-            <Route path="/EditProfile" element={<EditProfile />}/>
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/EditProfile" element={<EditProfile />} />
           </Routes>
         </Router>
-    </div>
+      </div>
     </>
   );
 }
