@@ -12,9 +12,9 @@ import { getUserAsync } from './redux/users/thunks.js';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserAsync('62cce16fbbd30b718df04804'));
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getUserAsync('62cce16fbbd30b718df04804'));
+  // }, [])
 
   return (
     <>

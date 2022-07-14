@@ -6,7 +6,7 @@ const queries = {
         return users;
     },
     getUser: async function (filter) {
-        const user = await User.findById(filter);
+        const user = await User.find(filter);
         return user;
     }
 }

@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel } from '@mui/material';
 import { MenuItem, Select } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -32,13 +33,29 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    }); 
+    const formData = new FormData(event.currentTarget);
+    const userData = {};
+    for (var field of formData) {
+      let name = field[0];
+      let value = field[1];
+      userData[name] = value;
+    }
+
+    const response = await fetch(`http://localhost:3001/signUp`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+
+    if (response.status === 200) {
+      navigate('/signIn')
+    }
   };
 
   const [inputs, setInputs] = useState({
@@ -50,7 +67,8 @@ export default function SignUp() {
     gender:'',
     email: '',
     password:'',
-    
+    phoneNumber: '',
+    bio: ''
   })
   
   const handleChange = (e) => {
@@ -146,7 +164,17 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
-
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="bio"
+                  label="Short Bio"
+                  name="bio"
+                  value={inputs.bio}
+                  onChange={handleChange}
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                 <InputLabel>Gender</InputLabel>
@@ -172,6 +200,19 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                   value={inputs.email}
+                  onChange={handleChange}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="phoneNumber"
+                  label="Phone Number"
+                  type="phoneNumber"
+                  id="phoneNumber"
+                  value={inputs.phoneNumber}
                   onChange={handleChange}
                 />
               </Grid>

@@ -81,6 +81,7 @@ function MatchingScreen() {
                     height={user.height}
                     gender={user.gender}
                     swipe={swipe}
+                    bio={user.bio}
                 />
               </Tindercard>
             ))}

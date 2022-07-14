@@ -22,3 +22,10 @@ export const updateUserAsync = createAsyncThunk(
     return await UsersService.updateUser({id, updatedFields});
   }
 );
+
+export const signInAsync = createAsyncThunk(
+  actionTypes.SIGN_IN,
+  async ({email, password}) => {
+    return await UsersService.signIn({email, password});
+  }
+);
