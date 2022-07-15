@@ -13,14 +13,14 @@ function App() {
   const dispatch = useDispatch();
 
   // useEffect(() => {
-  //   dispatch(getUserAsync('62cce16fbbd30b718df04804'));
+  //   dispatch(getUserAsync(window.localStorage.getItem('id')));
   // }, [])
 
   return (
     <>
-      <NavBar />
       <div className="App">
         <Router>
+          <NavBar />
           <Routes>
             <Route path="/matchingScreen" element={<MatchingScreen />} />
             <Route path="/signUp" element={<SignUp />} />

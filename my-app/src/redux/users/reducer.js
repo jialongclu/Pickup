@@ -39,6 +39,8 @@ const usersSlice = createSlice({
       })
       .addCase(signInAsync.fulfilled, (state, action) => {
         state.signInAsync = REQUEST_STATE.FULFILLED;
+        window.localStorage.setItem('email', action.payload.email);
+        window.localStorage.setItem('id', action.payload._id);
         state.user = { ...action.payload, id: action.payload._id };
       })
       .addCase(signInAsync.rejected, (state, action) => {

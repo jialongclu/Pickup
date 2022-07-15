@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel } from '@mui/material';
 import { MenuItem, Select } from '@mui/material';
-import { updateUserAsync } from '../../redux/users/thunks';
+import { updateUserAsync, getUserAsync } from '../../redux/users/thunks';
 
 const theme = createTheme();
 

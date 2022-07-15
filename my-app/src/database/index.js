@@ -51,7 +51,8 @@ async function createUser(userData) {
 }
 
 async function editUserProfile({ id, updatedFields }) {
-    const user = await queries.getUser(id);
+    const users = await queries.getUser({_id: id});
+    const user = users[0];
 
     Object.keys(updatedFields).forEach((name) => {
         const value = updatedFields[name];
