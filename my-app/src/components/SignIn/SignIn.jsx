@@ -1,4 +1,5 @@
-import * as React from 'react';
+import {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signInAsync } from '../../redux/users/thunks.js';
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -29,14 +32,27 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signedInUser = useSelector((state) => state.users.user)
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const email = data.get('email');
+    const password = data.get('password');
+
+    dispatch(signInAsync({email, password}))
   };
+
+  useEffect(() => {
+    if (signedInUser) {
+      navigate('/matchingScreen')
+    }
+  }, [signedInUser])
+
+
 
   return (
     <ThemeProvider theme={theme}>

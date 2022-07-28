@@ -10,8 +10,9 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from "react-router-dom";
 
-const settings = ['Profile', 'Logout'];
+const settings = [{name: 'Profile', link: <Link to="/EditProfile">Profile</Link>}, {name: 'Logout', link: <Link to="/signIn">Logout</Link>}];
 
 const NavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -56,8 +57,8 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.name}>
+                  {setting.link}
                 </MenuItem>
               ))}
             </Menu>
