@@ -1,5 +1,5 @@
 const getUsers = async () => {
-  const response = await fetch('http://localhost:3001/users', {
+  const response = await fetch('https://pickup-cpsc455.herokuapp.com/users', {
     method: 'GET'
   });
 
@@ -7,14 +7,14 @@ const getUsers = async () => {
 };
 
 const getUser = async (id) => {
-  const response = await fetch(`http://localhost:3001/users/${id}`, {
+  const response = await fetch(`https://pickup-cpsc455.herokuapp.com/users/${id}`, {
     method: 'GET'
   });
   return response.json();
 };
 
 const updateUser = async ({ id, updatedFields }) => {
-  const response = await fetch(`http://localhost:3001/users/${id}`, {
+  const response = await fetch(`https://pickup-cpsc455.herokuapp.com/users/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const updateUser = async ({ id, updatedFields }) => {
 };
 
 const signIn = async ({ email, password }) => {
-  const response = await fetch(`http://localhost:3001/signIn`, {
+  const response = await fetch(`https://pickup-cpsc455.herokuapp.com/signIn`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
