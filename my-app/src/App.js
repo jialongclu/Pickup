@@ -3,6 +3,7 @@ import MatchingScreen from './screens/matchingScreen/MatchingScreen.jsx';
 import SignUp from './components/SignUp/SignUp.jsx'
 import SignIn from "./components/SignIn/SignIn.jsx";
 import EditProfile from './components/EditProfile/EditProfile.jsx';
+import UserMatches from './components/UserMatches/UserMatches.jsx';
 import "./App.css"
 import NavBar from './components/NavBar';
 import { useEffect } from 'react';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/EditProfile" element={<EditProfile />} />
+            <Route path="/UserMatches" element={<UserMatches />} />
           </Routes>
         </Router>
       </div>
