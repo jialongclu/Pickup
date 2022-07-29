@@ -45,7 +45,7 @@ export default function SignUp() {
       userData[name] = value;
     }
 
-    const response = await fetch(`http://localhost:3001/signUp`, {
+    const response = await fetch(`https://pickup-cpsc455.herokuapp.com/signUp`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
