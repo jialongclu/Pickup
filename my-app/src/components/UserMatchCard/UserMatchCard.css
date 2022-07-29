@@ -1,0 +1,96 @@
+/* https://hashnode.com/post/responsive-team-members-card-using-html-and-css-cko9xsiqo004o1ps1e018282q */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.h1-text{
+    font-size: 22px;
+    margin: 40px 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:gray;
+}
+
+.h1-text i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+ .container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: gray;
+} 
+
+
+.box{
+    position: relative;
+    min-width: 250px;
+    background-color: #fff;
+    box-shadow: 2px 3px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.contactInformation {
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    width: 100%;
+
+}
+    
+.userStats{
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    width: 100%;
+    font-size: 14px;
+}
+
+.fa-phone {
+    padding-right: 5px;
+    color: gray
+}
+
+.userName {
+    font-weight: bold;
+}
+
+.content img{
+    width: 90px;
+    height: 90px;
+    border-radius:100px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: top;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.content p{
+    font-size: 15px;
+    color: gray;
+    margin: 4px 0px 10px 0px;
+}
