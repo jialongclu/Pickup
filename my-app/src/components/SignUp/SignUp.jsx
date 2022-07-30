@@ -16,6 +16,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel } from '@mui/material';
 import { MenuItem, Select } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+
 
 function Copyright(props) {
   return (
@@ -33,18 +35,107 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [validation, setValidation] = useState({
+    isValidFirst: true,
+    isValidLast: true,
+    isValidAge: true,
+    isValidHeight: true,
+    isValidBio: true,
+    isValidEmail: true,
+    isValidPhone: true,
+    isValidPassword: true,
+    isValidConfirmPassword: true
+  });
+
+  // validating sign in fields
+  useEffect(() => {
+    if (!validation.isValidFirst) {
+      console.log('Invalid First Name');
+      alert('Invalid First Name');
+    }
+    if (!validation.isValidLast) {
+      console.log('Invalid Last Name');
+      alert('Invalid Last Name');
+    }
+    if (!validation.isValidEmail) {
+      console.log('Invalid Email');
+      alert('Invalid Email Address');
+    }
+    if (!validation.isValidAge) {
+      console.log('Invalid Age');
+      alert('Invalid Age');
+    }
+    if (!validation.isValidHeight) {
+      console.log('Invalid Height');
+      alert('Invalid Height');
+    }
+    if (!validation.isValidBio) {
+      console.log('Invalid Bio');
+      alert('Invalid Bio');
+    }
+    if (!validation.isValidPhone) {
+      console.log('Invalid Phone');
+      alert('Invalid Phone');
+    }
+    if (!validation.isValidPassword) {
+      console.log('Invalid Password');
+      alert('Invalid Password');
+    }
+    if (!validation.isValidConfirmPassword) {
+      console.log('Passwords dont Match');
+      alert('Passwords don\'t Match');
+    }
+  }, [validation]);
+
   const navigate = useNavigate();
+
+  // validation logic 
+  const validateField = (fieldName, value, validator) => {
+    switch(fieldName) {
+      case 'firstName':
+        validator.isValidFirst = (value.length !== 0);
+        break;
+      case 'lastName':
+        validator.isValidLast = (value.length !== 0);
+        break;
+      case 'email':
+        validator.isValidEmail = ((/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i).test(value));
+        break;   
+      case 'age':
+        validator.isValidAge = (/\-?\d*\.?\d{1,2}/).test(value);
+        break; 
+      case 'height':
+        validator.isValidHeight = (/\-?\d*\.?\d{1,2}/).test(value);
+        break; 
+      case 'bio':
+        validator.isValidBio = (value.length !== 0);
+        break; 
+      case 'phoneNumber':
+        validator.isValidPhone = (/\-?\d*\.?\d{1,2}/).test(value);
+        break; 
+      case 'password':
+        validator.isValidPassword = (value.length !== 0);
+        break; 
+      default:
+    }
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const userData = {};
+    let validator = {...validation};
     for (var field of formData) {
       let name = field[0];
       let value = field[1];
       userData[name] = value;
+      validateField(name,value, validator);
+      if (name === 'confirmPassword') {
+        validator.isValidConfirmPassword = (userData['password'] === value);
+      }
     }
 
+    setValidation(() => (validator));
     const response = await fetch(`http://localhost:3001/signUp`, {
       method: 'PUT',
       headers: {
@@ -52,7 +143,6 @@ export default function SignUp() {
       },
       body: JSON.stringify(userData)
     });
-
     if (response.status === 200) {
       navigate('/signIn')
     }
@@ -68,7 +158,8 @@ export default function SignUp() {
     email: '',
     password:'',
     phoneNumber: '',
-    bio: ''
+    bio: '',
+    confirmPassword: ''
   })
   
   const handleChange = (e) => {
@@ -236,8 +327,10 @@ export default function SignUp() {
                   fullWidth
                   name="confirmPassword"
                   label="Confirm Password"
-                  type="confirmPassword"
+                  type="password"
                   id="confirmPassword"
+                  value={inputs.confirmPassword}
+                  onChange={handleChange}
                 />
               </Grid>
               
