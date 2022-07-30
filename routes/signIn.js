@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { checkPassword } = require('../../src/database/index.js')
+const { checkPassword } = require('../client/src/database/index.js')
 
 router.post('/', function (req, res, next) {
     const {email, password} = req.body;

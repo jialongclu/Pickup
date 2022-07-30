@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { getUsers, editUserProfile, getUserProfile } = require('../../src/database/index.js')
+const { getUsers, editUserProfile, getUserProfile } = require('../client/src/database/index.js')
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
