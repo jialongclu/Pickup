@@ -1,4 +1,3 @@
-require('dotenv').config()
 const populateDatabase = require('./generate-data');
 const mongoose = require('mongoose');
 const queries = require('./queries');
