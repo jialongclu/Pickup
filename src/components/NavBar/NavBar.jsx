@@ -12,7 +12,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom";
 
-const settings = [{name: 'Profile', link: <Link to="/EditProfile">Profile</Link>}, {name: 'Logout', link: <Link to="/signIn">Logout</Link>}];
+const settings = [
+  {name: 'Profile', link: <Link to="/EditProfile">Profile</Link>},
+  {name: 'Matches', link: <Link to="/userMatches">Matches</Link>},
+  {name: 'Logout', link: <Link to="/signIn">Logout</Link>},
+
+];
 
 const NavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
