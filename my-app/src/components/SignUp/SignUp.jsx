@@ -236,7 +236,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="age"
+                  id="age (in cm)"
                   label="Age"
                   name="age"
                   value={inputs.age}

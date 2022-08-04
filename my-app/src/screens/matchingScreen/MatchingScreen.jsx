@@ -11,15 +11,59 @@ import { getUsersAsync } from "../../redux/users/thunks";
 function MatchingScreen() {
 
     const users = useSelector((state) => state.users.list);
+    const filters = useSelector((state) => state.filters);
+    const [filteredUsers, setfilteredUsers] = useState([])
+
+    const filterUserAge  = (filterVal, user, filteredUsers) => {
+      switch(filterVal) {
+        case 'any':
+          return true;
+        case '10-15':
+          return (user.age >= 10 & user.age <= 15);
+        case '16-28':
+          return (user.age >= 16 & user.age <= 28);
+        case '29+':
+          return (user.age >= 29);
+        default:
+      }
+    }
+
+    const filterUserHeight  = (filterVal, user, filteredUsers) => {
+      switch(filterVal) {
+        case 'any':
+          return true;
+        case 'under 165cm':
+          return (user.height <= 165);
+        case '165cm-185cm':
+          return (user.height >= 165 & user.height <= 185);
+        case 'over 185cm':
+          return (user.height >= 185);
+        default:
+      }
+    }
+
+    const filterUserLevel  = (filterVal, user) => {
+      return (user.skillLevel.toLowerCase() === filterVal.toLowerCase() || filterVal.toLowerCase() === 'any');
+    }
+
+    useEffect(() => {
+      dispatch(getUsersAsync());
+    }, []);
+
+    useEffect(() => {
+      var filusers = []
+      for (var user of users) {
+        if (filterUserHeight(filters.heightFilter,user) && filterUserAge(filters.ageFilter,user) && filterUserLevel(filters.skillLevelFilter,user)) {
+          filusers.push(user);
+        }
+      }
+      setfilteredUsers((prevState) => (filusers));
+    }, [filters, users]);
 
     const [currentIndex, setCurrentIndex] = useState(users.length - 1)
     const [lastDirection, setLastDirection] = useState()
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(getUsersAsync());
-    }, []);
   
     const currentIndexRef = useRef(currentIndex)
   
@@ -58,13 +102,13 @@ function MatchingScreen() {
       if (canSwipe && currentIndex < users.length) {
         await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
       }
-    }
-    
+    }    
     return (
         <div className="matchingScreen">
           <FilterBar />
           <div className="matchingCardsContainer">
-            {users.map((user,index) => (
+            {filteredUsers.length === 0 && <div>No Users Found</div>}
+            {filteredUsers.map((user,index) => (
               <Tindercard
                 ref={childRefs[index]}
                 className="swipe"

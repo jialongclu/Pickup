@@ -16,9 +16,11 @@ const filtersSlice = createSlice({
         },
         updateSkillLevelFilter: (state, action) => {
             state.skillLevelFilter = action.payload;
+            console.log('updated height filter to value ' + action.payload);
         },
         updateHeightFilter: (state, action) => {
             state.heightFilter = action.payload;
+            console.log('updated level filter to value ' + action.payload);
         }
     }
 });
