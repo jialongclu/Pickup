@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MatchingScreen from './screens/matchingScreen/MatchingScreen.jsx';
 import SignUp from './components/SignUp/SignUp.jsx'
 import SignIn from "./components/SignIn/SignIn.jsx";
@@ -23,6 +23,7 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
+            <Route path="/" element={<Navigate replace to="/signIn" />} />
             <Route path="/matchingScreen" element={<MatchingScreen />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
