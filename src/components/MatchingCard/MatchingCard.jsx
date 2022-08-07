@@ -32,7 +32,7 @@ function MatchingCard(props) {
                     className="profilePicture"
                     sx={{ width: '10rem' }}
                     component="img"
-                    image={ProfilePicture}
+                    image={props.image || ProfilePicture}
                     alt="Profile"
                 />
                 <Typography variant="body1" color="text.secondary">
