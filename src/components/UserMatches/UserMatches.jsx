@@ -23,6 +23,7 @@ const UserMatches = () => {
       height={user.height}
       skillLevel={user.skillLevel}
       phoneNumber={user.phoneNumber}
+      image={user.image}
       />
   ))
   
