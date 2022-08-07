@@ -1,6 +1,6 @@
 import React from 'react'
 import './UserMatchCard.css';
-import ProfilePicture from './testProfilePic.jpg';
+
 
 const UserMatchCard = (props) => {
   
@@ -9,7 +9,7 @@ const UserMatchCard = (props) => {
     <div className="box">
      
       <div className="content">
-        <img src={ProfilePicture} />
+        <img src={props.image} />
         <p className="userName">{props.firstName} {props.lastName}</p>
         <div className="contactInformation">
           <i className="fa fa-phone" aria-hidden="true"></i>

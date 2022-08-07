@@ -17,7 +17,8 @@ import { FormControl, InputLabel } from '@mui/material';
 import { MenuItem, Select } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
-
+import FileBase64 from 'react-file-base64';
+import './SignUp.css';
 
 function Copyright(props) {
   return (
@@ -123,6 +124,7 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    formData.append('image', inputs.image);
     const userData = {};
     let validator = {...validation};
     for (var field of formData) {
@@ -135,8 +137,8 @@ export default function SignUp() {
       }
     }
 
-    setValidation(() => (validator));
-    const response = await fetch(`http://localhost:3001/signUp`, {
+
+    const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signUp`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -159,14 +161,22 @@ export default function SignUp() {
     password:'',
     phoneNumber: '',
     bio: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    image:'',
   })
   
+  
+  function handleImageInput(base64) {
+    setInputs({...inputs, image: base64});
+  }
+
   const handleChange = (e) => {
+    
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+    console.log(inputs);
   };
 
   return (
@@ -243,29 +253,6 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
-
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="height"
-                  label="Height (cm)"
-                  name="height"
-                  value={inputs.height}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="bio"
-                  label="Short Bio"
-                  name="bio"
-                  value={inputs.bio}
-                  onChange={handleChange}
-                />
-              </Grid>
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                 <InputLabel>Gender</InputLabel>
@@ -280,6 +267,37 @@ export default function SignUp() {
                     <MenuItem value={'Other'}>Other</MenuItem>
                   </Select>
                   </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="height"
+                  label="Height (cm)"
+                  name="height"
+                  value={inputs.height}
+                  onChange={handleChange}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  multiline
+                  id="bio"
+                  label="Short Bio"I
+                  name="bio"
+                  value={inputs.bio}
+                  onChange={handleChange}
+                />
+              </Grid>
+              
+              <Grid item xs={12} value={inputs.image}>
+                <div className='upload-picture'>
+                  <FileBase64 multiple={ false } onDone={({ base64 }) => handleImageInput(base64)}  />
+                </div>
+            
               </Grid>
 
               <Grid item xs={12}>
