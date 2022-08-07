@@ -17,6 +17,7 @@ import { FormControl, InputLabel } from '@mui/material';
 import { MenuItem, Select } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import FileBase64 from 'react-file-base64';
+import './SignUp.css';
 
 function Copyright(props) {
   return (
@@ -38,20 +39,15 @@ export default function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.currentTarget);
-    console.log(inputs.image);
     const formData = new FormData(event.currentTarget);
     formData.append('image', inputs.image);
-    console.log('form data', formData);
     const userData = {};
     for (var field of formData) {
-      console.log("field", field);
       let name = field[0];
       let value = field[1];
       userData[name] = value;
     }
 
-    console.log(userData)
 
     const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signUp`, {
       method: 'PUT',
@@ -82,21 +78,9 @@ export default function SignUp() {
   
   
   function handleImageInput(base64) {
-    console.log('triggered')
-    console.log(base64);
     setInputs({...inputs, image: base64});
-    console.log('done');
-    console.log(inputs);
   }
 
-  // const handleImageInput = (base64) => {
-    // setInputs((prevState) => ({
-    //   ...prevState,
-    //   image: base64,
-    // }));
-  // };
-
-  
   const handleChange = (e) => {
     
     setInputs((prevState) => ({
@@ -221,7 +205,10 @@ export default function SignUp() {
               </Grid>
               
               <Grid item xs={12} value={inputs.image}>
-                <FileBase64 multiple={ false } onDone={({ base64 }) => handleImageInput(base64)}  />
+                <div className='upload-picture'>
+                  <FileBase64 multiple={ false } onDone={({ base64 }) => handleImageInput(base64)}  />
+                </div>
+            
               </Grid>
 
               <Grid item xs={12}>

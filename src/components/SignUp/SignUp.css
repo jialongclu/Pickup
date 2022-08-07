@@ -1,0 +1,13 @@
+.upload-picture {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid rgb(164, 162, 162);
+    color: gray;
+    font-size: 13px;
+    line-height: 30px;
+    text-align: left;
+    width:100%;
+}
