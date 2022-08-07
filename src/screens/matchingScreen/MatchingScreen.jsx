@@ -126,6 +126,7 @@ function MatchingScreen() {
                     gender={user.gender}
                     swipe={swipe}
                     bio={user.bio}
+                    image={user.image}
                 />
               </Tindercard>
             ))}
