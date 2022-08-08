@@ -4,6 +4,7 @@ import SignUp from './components/SignUp/SignUp.jsx'
 import SignIn from "./components/SignIn/SignIn.jsx";
 import EditProfile from './components/EditProfile/EditProfile.jsx';
 import UserMatches from './components/UserMatches/UserMatches.jsx';
+import HomePage from './components/HomePage/HomePage.jsx';
 import "./App.css"
 import NavBar from './components/NavBar';
 import { useEffect } from 'react';
@@ -23,7 +24,8 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Navigate replace to="/signUp" />} />
+            <Route path="/" element={<Navigate replace to="/homePage" />} />
+            <Route path="/homePage" element={<HomePage />} />
             <Route path="/matchingScreen" element={<MatchingScreen />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
