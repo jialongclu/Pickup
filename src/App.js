@@ -23,7 +23,7 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Navigate replace to="/signIn" />} />
+            <Route path="/" element={<Navigate replace to="/signUp" />} />
             <Route path="/matchingScreen" element={<MatchingScreen />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
