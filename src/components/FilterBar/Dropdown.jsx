@@ -6,9 +6,8 @@ import Select from '@mui/material/Select';
 import { useDispatch, useSelector } from "react-redux";
 
 function Dropdown(props) {
-const filterValue = useSelector((state) => state.ageFilter);
 const dispatch = useDispatch();
-const [value, setValue] = React.useState('');
+const [value, setValue] = React.useState('any');
 
 const options = props.options
 const reducer = props.reducer
@@ -20,7 +19,7 @@ const handleChange = (event) => {
     
 
 return (
-    <FormControl fullWidth>
+  <FormControl fullWidth>
   <InputLabel id="demo-simple-select-label">{props.title}</InputLabel>
   <Select
     labelId="demo-simple-select-label"
@@ -33,10 +32,8 @@ return (
         <MenuItem key={option} value={option}>{option}</MenuItem>
     ))}
   </Select>
-</FormControl>   
+  </FormControl>   
     )   
 }
 
 export default Dropdown;
-
-
