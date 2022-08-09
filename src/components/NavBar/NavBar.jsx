@@ -23,7 +23,7 @@ const NavBar = () => {
     { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
     { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
     { name: "Keep swiping", link: <Link to="/matchingScreen">Keep Swiping</Link> },
-    { name: "Logout", link: <Link onClick={() => {
+    { name: "Logout", link: <Link to="/signIn" onClick={() => {
       dispatch({type: actionTypes.LOGOUT})
       navigate("/signIn")
     }}>Logout</Link>}
