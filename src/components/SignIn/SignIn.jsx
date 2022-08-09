@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -46,11 +46,13 @@ export default function SignIn() {
     dispatch(signInAsync({email, password}))
   };
 
+  const isUserLoggedIn = signedInUser && Object.keys(signedInUser).length > 1;
+
   useEffect(() => {
-    if (signedInUser) {
+    if (isUserLoggedIn) {
       navigate('/matchingScreen')
     }
-  }, [signedInUser])
+  }, [isUserLoggedIn])
 
 
 

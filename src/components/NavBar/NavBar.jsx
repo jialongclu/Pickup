@@ -54,7 +54,7 @@ const NavBar = () => {
             </Link>
           </Typography>
 
-          { currentUser ? 
+          { currentUser && Object.keys(currentUser).length > 1 ? 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
