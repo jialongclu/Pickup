@@ -1,7 +1,7 @@
 export async function getMatches() {
   const id = localStorage.getItem("id");
   try {
-    const response = await fetch(`http://localhost:3001/match/${id}`, {
+    const response = await fetch(`https://pickup-server-heroku.herokuapp.com/match/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
