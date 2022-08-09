@@ -12,16 +12,21 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { actionTypes } from '../../redux/users/actionTypes';
+import { useNavigate } from "react-router-dom";
 
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const settings = [
     { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
     { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
     { name: "Keep swiping", link: <Link to="/matchingScreen">Keep Swiping</Link> },
-    { name: "Logout", link: <Link to="/signIn" onClick={() => dispatch({type: actionTypes.LOGOUT})}>Logout</Link>}
+    { name: "Logout", link: <Link onClick={() => {
+      dispatch({type: actionTypes.LOGOUT})
+      navigate("/signIn")
+    }}>Logout</Link>}
   ];
 
   const currentUser = useSelector((state) => state.users.user);
