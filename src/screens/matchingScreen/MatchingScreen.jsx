@@ -7,11 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { getUsersAsync } from "../../redux/users/thunks";
 import { createInteraction } from "./useMatching";
+import { useNavigate } from "react-router-dom";
 
 function MatchingScreen() {
   const users = useSelector((state) => state.users.list);
+  const currentUser = useSelector((state) => state.users.user);
   const filters = useSelector((state) => state.filters);
   const [filteredUsers, setfilteredUsers] = useState([]);
+  const navigate = useNavigate();
 
   const filterUserAge = (filterVal, user, filteredUsers) => {
     switch (filterVal) {
@@ -26,6 +29,12 @@ function MatchingScreen() {
       default:
     }
   };
+
+  useEffect(() => {
+    if (Object.keys(currentUser).length === 0) {
+      navigate('/')
+    }
+  }, [currentUser])
 
   const filterUserHeight = (filterVal, user, filteredUsers) => {
     switch (filterVal) {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,14 +11,21 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import { actionTypes } from '../../redux/users/actionTypes';
 
-const settings = [
-  { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
-  { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
-  { name: "Logout", link: <Link to="/signIn">Logout</Link> },
-];
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+
+  const settings = [
+    { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
+    { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
+    { name: "Keep swiping", link: <Link to="/matchingScreen">Keep Swiping</Link> },
+    { name: "Logout", link: <Link to="/signIn" onClick={() => dispatch({type: actionTypes.LOGOUT})}>Logout</Link>}
+  ];
+
+  const currentUser = useSelector((state) => state.users.user);
+  
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -46,6 +54,7 @@ const NavBar = () => {
             </Link>
           </Typography>
 
+          { currentUser ? 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -73,6 +82,7 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
+          : <></>}
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAction } from '@reduxjs/toolkit';
 import { getUsersAsync, updateUserAsync, signInAsync } from './thunks';
 
 const REQUEST_STATE = {
@@ -7,6 +7,8 @@ const REQUEST_STATE = {
   FULFILLED: 'FULFILLED',
   REJECTED: 'REJECTED'
 };
+
+const logout = createAction('logout')
 
 const INITIAL_STATE = {
   list: [],
@@ -18,7 +20,11 @@ const INITIAL_STATE = {
 const usersSlice = createSlice({
   name: 'users',
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.users.user = {};
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUsersAsync.pending, (state) => {
