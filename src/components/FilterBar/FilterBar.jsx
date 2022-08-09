@@ -4,7 +4,7 @@ import { updateAgeFilter, updateSkillLevelFilter, updateHeightFilter  } from '..
 function FilterBar() {   
 return (
     <div className="FilterBar">
-        <Dropdown title="Height" options={['any', 'under 5\'5','5\'6-6ft','over 6ft']} reducer = {updateHeightFilter}/>
+        <Dropdown title="Height" options={['any', 'under 165cm','165cm-185cm','over 185cm']} reducer = {updateHeightFilter}/>
         <Dropdown title="Age" options={['any', '10-15','16-28','29+']} reducer = {updateAgeFilter}/>
         <Dropdown title="Level" options={['any', 'beginner','intermediate','advanced']} reducer = {updateSkillLevelFilter}/>
     </div>

@@ -1,6 +1,7 @@
 const getUsers = async () => {
-  const response = await fetch('https://pickup-server-heroku.herokuapp.com/users', {
-    method: 'GET'
+  const id = localStorage.getItem("id");
+  const response = await fetch(`https://pickup-server-heroku.herokuapp.com/users/discover/${id}`, {
+    method: "GET",
   });
 
   return response.json();
@@ -8,18 +9,18 @@ const getUsers = async () => {
 
 const getUser = async (id) => {
   const response = await fetch(`https://pickup-server-heroku.herokuapp.com/users/${id}`, {
-    method: 'GET'
+    method: "GET",
   });
   return response.json();
 };
 
 const updateUser = async ({ id, updatedFields }) => {
   const response = await fetch(`https://pickup-server-heroku.herokuapp.com/users/${id}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(updatedFields)
+    body: JSON.stringify(updatedFields),
   });
 
   return response.json();
@@ -27,11 +28,11 @@ const updateUser = async ({ id, updatedFields }) => {
 
 const signIn = async ({ email, password }) => {
   const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signIn`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password }),
   });
 
   return response.json();
@@ -41,5 +42,5 @@ export default {
   getUsers,
   getUser,
   updateUser,
-  signIn
+  signIn,
 };
