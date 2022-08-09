@@ -52,7 +52,7 @@ const NavBar = () => {
             onClick={() => {}}
           >
             <Link
-              to="/matchingScreen"
+              to="/"
               style={{ textDecoration: "none", color: "white" }}
             >
               Home
