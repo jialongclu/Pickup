@@ -1,22 +1,20 @@
-
-import { useState } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 
 const settings = [
-  {name: 'Profile', link: <Link to="/EditProfile">Profile</Link>},
-  {name: 'Matches', link: <Link to="/userMatches">Matches</Link>},
-  {name: 'Logout', link: <Link to="/signIn">Logout</Link>},
-
+  { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
+  { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
+  { name: "Logout", link: <Link to="/signIn">Logout</Link> },
 ];
 
 const NavBar = () => {
@@ -34,9 +32,18 @@ const NavBar = () => {
     <AppBar position="static" sx={{ bgcolor: "#ff8540" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Home
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            onClick={() => {}}
+          >
+            <Link
+              to="/matchingScreen"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Home
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -46,25 +53,23 @@ const NavBar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name}>
-                  {setting.link}
-                </MenuItem>
+                <MenuItem key={setting.name}>{setting.link}</MenuItem>
               ))}
             </Menu>
           </Box>
