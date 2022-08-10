@@ -84,7 +84,13 @@ const NavBar = () => {
             sx={{ flexGrow: 1 }}
             onClick={() => { }}
           >
-            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+
+            <Link to="/"
+              onClick={() => {
+                navigate("/");
+                window.location.reload();
+              }}
+              style={{ textDecoration: "none", color: "white" }}>
               Home
             </Link>
           </Typography>
