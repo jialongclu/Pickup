@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,7 +17,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControl, InputLabel } from "@mui/material";
 import { MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import FileBase64 from "react-file-base64";
 import "./SignUp.css";
 
@@ -52,46 +52,7 @@ export default function SignUp() {
     isValidPassword: true,
     isValidConfirmPassword: true,
   });
-
-  // validating sign in fields
-  useEffect(() => {
-    if (!validation.isValidFirst) {
-      console.log("Invalid First Name");
-      alert("Invalid First Name");
-    }
-    if (!validation.isValidLast) {
-      console.log("Invalid Last Name");
-      alert("Invalid Last Name");
-    }
-    if (!validation.isValidEmail) {
-      console.log("Invalid Email");
-      alert("Invalid Email Address");
-    }
-    if (!validation.isValidAge) {
-      console.log("Invalid Age");
-      alert("Invalid Age");
-    }
-    if (!validation.isValidHeight) {
-      console.log("Invalid Height");
-      alert("Invalid Height");
-    }
-    if (!validation.isValidBio) {
-      console.log("Invalid Bio");
-      alert("Invalid Bio");
-    }
-    if (!validation.isValidPhone) {
-      console.log("Invalid Phone");
-      alert("Invalid Phone");
-    }
-    if (!validation.isValidPassword) {
-      console.log("Invalid Password");
-      alert("Invalid Password");
-    }
-    if (!validation.isValidConfirmPassword) {
-      console.log("Passwords dont Match");
-      alert("Passwords don't Match");
-    }
-  }, [validation]);
+  const [showValidationError, setShowValidationError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -144,13 +105,26 @@ export default function SignUp() {
       }
     }
 
-    const response = await fetch(`http://localhost:3001/signUp`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    let areAnyFieldsInvalid = false;
+    for (let isValidField in validator) {
+      areAnyFieldsInvalid |= !validator[isValidField];
+    }
+
+    if (areAnyFieldsInvalid) {
+      setShowValidationError(true);
+      return false;
+    }
+
+    const response = await fetch(
+      "https://pickup-server-heroku.herokuapp.com/signUp",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
     if (response.status === 200) {
       navigate("/signIn");
     }
@@ -180,7 +154,6 @@ export default function SignUp() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    console.log(inputs);
   };
 
   return (
@@ -380,6 +353,12 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
+            {showValidationError && (
+              <Alert severity="error">
+                There was an error signing up. Please check the information
+                you've entered
+              </Alert>
+            )}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link onClick={() => navigate("/signIn")} variant="body2">
