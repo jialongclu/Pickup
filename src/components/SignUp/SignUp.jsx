@@ -105,11 +105,14 @@ export default function SignUp() {
       }
     }
 
-    for (let isValidField in Object.keys(validator)) {
-      if (!validator[isValidField]) {
-        setShowValidationError(true);
-        return false;
-      }
+    let areAnyFieldsInvalid = false;
+    for (let isValidField in validator) {
+      areAnyFieldsInvalid |= !validator[isValidField]
+    }
+
+    if (areAnyFieldsInvalid) {
+      setShowValidationError(true);
+      return false;
     }
 
     const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signUp`, {
