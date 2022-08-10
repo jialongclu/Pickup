@@ -35,6 +35,9 @@ https://github.com/jialongclu/pickup-server
 
 
 # Above and Beyond Functionality
+
+We looked into industry practices when sign up fails or editing profile succeeds and implemented a similar pattern to show users a status. During development, we would often find ourselves not knowing if something went right until we checked the Network tab or checked console. We implemented an alert system using Redux store to check if there were any errors in any of the api calls and display an alert accordingly.
+
 # Next Steps
 
 In order to increase interactiveness and provide greater value for our users, we plan to implement the features we did not complete in our stretch goals. It would be valuable to have a built-in chat feature to allow users to communicate directly within our app. We also plan to integrate the Google Maps API in order to allow users to mark locations of popular basketball courts and to check how busy they are throughout the day.
