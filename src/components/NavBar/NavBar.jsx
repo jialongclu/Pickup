@@ -50,6 +50,7 @@ const NavBar = () => {
       link: (
         <Link
           className="option"
+          to="/"
           onClick={() => {
             navigate("/");
             window.location.reload();
