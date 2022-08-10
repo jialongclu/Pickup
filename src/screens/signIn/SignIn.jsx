@@ -57,7 +57,7 @@ export default function SignIn() {
     if (isUserLoggedIn) {
       navigate("/matchingScreen");
     }
-  }, [isUserLoggedIn]);
+  }, [isUserLoggedIn, navigate]);
 
   return (
     <ThemeProvider theme={theme}>

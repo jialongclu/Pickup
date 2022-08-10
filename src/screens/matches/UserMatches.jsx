@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import UserMatchCard from "../../components/UserMatchCard/UserMatchCard";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUsersAsync } from "../../redux/users/thunks";
 import { getMatches } from "./useMatches";
 
 const UserMatches = () => {
   const [matches, setMatches] = useState([]);
-
-  const users = useSelector((state) => state.users.list);
 
   const dispatch = useDispatch();
 
@@ -18,7 +16,7 @@ const UserMatches = () => {
       setMatches(matches);
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   let content = matches.map((user) => (
     <UserMatchCard

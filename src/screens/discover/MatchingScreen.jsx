@@ -10,6 +10,7 @@ import { createInteraction } from "./useMatching";
 import "./MatchingScreen.css";
 
 function MatchingScreen() {
+  const dispatch = useDispatch();
   const users = useSelector((state) => state.users.list);
   const filters = useSelector((state) => state.filters);
   const [filteredUsers, setfilteredUsers] = useState([]);
@@ -51,7 +52,7 @@ function MatchingScreen() {
 
   useEffect(() => {
     dispatch(getUsersAsync());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     var filusers = [];
@@ -68,9 +69,6 @@ function MatchingScreen() {
   }, [filters, users]);
 
   const [currentIndex, setCurrentIndex] = useState(users.length - 1);
-  const [lastDirection, setLastDirection] = useState();
-
-  const dispatch = useDispatch();
 
   const currentIndexRef = useRef(currentIndex);
 
@@ -79,7 +77,7 @@ function MatchingScreen() {
       Array(users.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [users.length]
   );
 
   const updateCurrentIndex = (val) => {
@@ -91,7 +89,6 @@ function MatchingScreen() {
 
   // set last direction and decrease current index
   const swiped = async (direction, nameToDelete, index, userIdSwiped) => {
-    setLastDirection(direction);
     updateCurrentIndex(index - 1);
     if (direction === "left") {
       await createInteraction(false, userIdSwiped);
