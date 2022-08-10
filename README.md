@@ -40,7 +40,7 @@ https://github.com/jialongclu/pickup-server
 In order to increase interactiveness and provide greater value for our users, we plan to implement the features we did not complete in our stretch goals. It would be valuable to have a built-in chat feature to allow users to communicate directly within our app. We also plan to integrate the Google Maps API in order to allow users to mark locations of popular basketball courts and to check how busy they are throughout the day.
 
 # Team Contributions
-* **Tanraj** - 
+* **Tanraj** - I worked primarily on creating the functionality for discovering, matching and interacting with other users. To allow this I needed to first, track and send user interaction data to our API and store it in our Mongo DB collections. Secondly, I needed to build a query system and link the query data to the Discover and Matches screens. I also made our app responsive and cleaned up the app design.
 * **Jialong** - I worked on setting up Node JS, Express, and MongoDB. I created the endpoints for sign up and log in and stored the created users on MongoDB to be used for matching. I also created the edit profile, which allows users to update their information after signing up. I added alerts for the sign up page if information was missing.
 * **Sara** - For Pickup, I worked on implementing the front end for the home page, sign up, sign in and matching page. I also implemented the swipeable card feature on the matching screen and the ability to upload profile pictures on user sign up. 
 * **Shubh** - 
