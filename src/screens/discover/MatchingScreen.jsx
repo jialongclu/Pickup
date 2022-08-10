@@ -2,19 +2,17 @@
 import Tindercard from "react-tinder-card";
 import MatchingCard from "../../components/MatchingCard";
 import FilterBar from "../../components/FilterBar";
-import "./MatchingScreen.css";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import { getUsersAsync } from "../../redux/users/thunks";
 import { createInteraction } from "./useMatching";
-import { useNavigate } from "react-router-dom";
+
+import "./MatchingScreen.css";
 
 function MatchingScreen() {
   const users = useSelector((state) => state.users.list);
-  const currentUser = useSelector((state) => state.users.user);
   const filters = useSelector((state) => state.filters);
   const [filteredUsers, setfilteredUsers] = useState([]);
-  const navigate = useNavigate();
 
   const filterUserAge = (filterVal, user, filteredUsers) => {
     switch (filterVal) {
@@ -29,12 +27,6 @@ function MatchingScreen() {
       default:
     }
   };
-
-  useEffect(() => {
-    if (Object.keys(currentUser).length === 0) {
-      navigate('/')
-    }
-  }, [currentUser])
 
   const filterUserHeight = (filterVal, user, filteredUsers) => {
     switch (filterVal) {
@@ -132,7 +124,13 @@ function MatchingScreen() {
     <div className="matchingScreen">
       <FilterBar />
       <div className="matchingCardsContainer">
-        {filteredUsers.length === 0 && <div>No Users Found</div>}
+        {filteredUsers.length === 0 && (
+          <div className="noUsers">
+            Sorry you have already interacted with all the users on our
+            platform! Please reach out to the ones you matched with or reccomend
+            this app to other.
+          </div>
+        )}
         {filteredUsers.map((user, index) => (
           <Tindercard
             ref={childRefs[index]}

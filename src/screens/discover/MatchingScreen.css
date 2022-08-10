@@ -1,0 +1,28 @@
+.matchingScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.matchingCardsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px 50px 0px;
+  width: auto;
+}
+
+.noUsers {
+  width: 300px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.swipe {
+  position: absolute;
+}

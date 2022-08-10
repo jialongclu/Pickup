@@ -1,17 +1,40 @@
 .matchingCard {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    height: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  min-height: 400px;
+  background-color: #f5f5f5 !important;
+  box-shadow: 0px 5px 10px 2px orange;
+}
+
+.profilePicture {
+  border-radius: 50% !important;
+  width: 125px !important;
+  margin-bottom: 10px;
 }
 
 .cardContent {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 .userInfo {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 225px;
+  margin: 15px 10px 10px 10px;
+  gap: 2rem;
+}
+
+.bio {
+  color: black;
+  width: 225px;
+  text-align: justify;
+}
+
+.fieldLabel {
 }

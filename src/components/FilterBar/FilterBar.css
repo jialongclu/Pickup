@@ -1,0 +1,12 @@
+.FilterBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.DropdownFilter {
+  width: 150px;
+  margin: 50px 25px 0px 25px !important;
+}

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert"
+import Alert from "@mui/material/Alert";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -107,7 +107,7 @@ export default function SignUp() {
 
     let areAnyFieldsInvalid = false;
     for (let isValidField in validator) {
-      areAnyFieldsInvalid |= !validator[isValidField]
+      areAnyFieldsInvalid |= !validator[isValidField];
     }
 
     if (areAnyFieldsInvalid) {
@@ -115,13 +115,16 @@ export default function SignUp() {
       return false;
     }
 
-    const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signUp`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    const response = await fetch(
+      "https://pickup-server-heroku.herokuapp.com/signUp",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    );
     if (response.status === 200) {
       navigate("/signIn");
     }
@@ -350,10 +353,15 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            {showValidationError && <Alert severity="error">There was an error signing up. Please check the information you've entered</Alert>}
+            {showValidationError && (
+              <Alert severity="error">
+                There was an error signing up. Please check the information
+                you've entered
+              </Alert>
+            )}
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link onClick={() => navigate('/signIn')} variant="body2">
+                <Link onClick={() => navigate("/signIn")} variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
