@@ -50,10 +50,9 @@ const NavBar = () => {
       link: (
         <Link
           className="option"
-          to="/homePage"
           onClick={() => {
-            navigate("/homePage");
-            dispatch({ type: actionTypes.LOGOUT });
+            navigate("/");
+            window.location.reload();
           }}
         >
           Logout
@@ -82,7 +81,7 @@ const NavBar = () => {
             variant="h6"
             component="div"
             sx={{ flexGrow: 1 }}
-            onClick={() => {}}
+            onClick={() => { }}
           >
             <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               Home
@@ -118,8 +117,8 @@ const NavBar = () => {
               </Menu>
             </Box>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
         </Toolbar>
       </Container>
     </AppBar>
