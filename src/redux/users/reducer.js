@@ -18,7 +18,11 @@ const INITIAL_STATE = {
 const usersSlice = createSlice({
   name: 'users',
   initialState: INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    logout(state) {
+      state.users.user = {};
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getUsersAsync.pending, (state) => {

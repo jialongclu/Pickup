@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import UserMatchCard from "../UserMatchCard/UserMatchCard";
+import UserMatchCard from "../../components/UserMatchCard/UserMatchCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsersAsync } from "../../redux/users/thunks";
 import { getMatches } from "./useMatches";

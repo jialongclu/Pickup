@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,14 +11,59 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import { actionTypes } from "../../redux/users/actionTypes";
+import { useNavigate } from "react-router-dom";
 
-const settings = [
-  { name: "Profile", link: <Link to="/EditProfile">Profile</Link> },
-  { name: "Matches", link: <Link to="/userMatches">Matches</Link> },
-  { name: "Logout", link: <Link to="/signIn">Logout</Link> },
-];
+import "./NavBar.css";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const settings = [
+    {
+      name: "Profile",
+      link: (
+        <Link className="option" to="/EditProfile">
+          Profile
+        </Link>
+      ),
+    },
+    {
+      name: "Matches",
+      link: (
+        <Link className="option" to="/userMatches">
+          Matches
+        </Link>
+      ),
+    },
+    {
+      name: "Discover",
+      link: (
+        <Link className="option" to="/matchingScreen">
+          Discover
+        </Link>
+      ),
+    },
+    {
+      name: "Logout",
+      link: (
+        <Link
+          className="option"
+          to="/homePage"
+          onClick={() => {
+            navigate("/homePage");
+            dispatch({ type: actionTypes.LOGOUT });
+          }}
+        >
+          Logout
+        </Link>
+      ),
+    },
+  ];
+
+  const currentUser = useSelector((state) => state.users.user);
+
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -38,41 +84,42 @@ const NavBar = () => {
             sx={{ flexGrow: 1 }}
             onClick={() => {}}
           >
-            <Link
-              to="/matchingScreen"
-              style={{ textDecoration: "none", color: "white" }}
-            >
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
               Home
             </Link>
           </Typography>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Jia" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting.name}>{setting.link}</MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          {currentUser && Object.keys(currentUser).length > 1 ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Jia" src={currentUser.image} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting.name}>{setting.link}</MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          ) : (
+            <></>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

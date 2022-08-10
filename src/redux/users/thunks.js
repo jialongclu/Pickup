@@ -26,6 +26,10 @@ export const updateUserAsync = createAsyncThunk(
 export const signInAsync = createAsyncThunk(
   actionTypes.SIGN_IN,
   async ({email, password}) => {
-    return await UsersService.signIn({email, password});
+    try {
+      return await UsersService.signIn({email, password});
+    } catch (err) {
+      alert('There was a problem login in! Check your password')
+    }
   }
 );
