@@ -1,6 +1,9 @@
 # Project Summary
 Pickup is tinder for pickup basketball. We help local Vancouver basketball players link up and create a community within the basketball scene here in Vancouver. Once users are matched, they can see each other’s contact information and connect!
 
+Here is the repo to our server!
+https://github.com/jialongclu/pickup-server
+
 # Project Tasks Requirements
 
 *  Project task requirements:
