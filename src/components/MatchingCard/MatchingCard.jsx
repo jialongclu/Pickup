@@ -43,7 +43,6 @@ function MatchingCard(props) {
         <IconButton
           aria-label="Reject"
           onClick={() => {
-            console.log("ferfer");
             props.swipe("left", props.userId);
           }}
         >
