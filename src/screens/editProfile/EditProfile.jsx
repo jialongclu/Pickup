@@ -13,12 +13,20 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControl, InputLabel } from "@mui/material";
 import { MenuItem, Select } from "@mui/material";
 import { updateUserAsync } from "../../redux/users/thunks";
+import Alert from "@mui/material/Alert";
 
 const theme = createTheme();
 
 export default function EditProfile() {
   const userInfo = useSelector((state) => state.users.user);
+  const updateUserAsyncStatus = useSelector((state) => state.users.updateUserAsync);
+  const [showAlert, setShowAlert] = useState(false);
 
+  useEffect(() => {
+    if (updateUserAsyncStatus === 'FULFILLED') {
+      setShowAlert(true)
+    }
+  }, [updateUserAsyncStatus])
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -182,6 +190,7 @@ export default function EditProfile() {
             >
               Update Profile
             </Button>
+            {showAlert && <Alert severity="success">You have successfully updated your profile!</Alert>}
             <Grid container justifyContent="flex-end"></Grid>
           </Box>
         </Box>
