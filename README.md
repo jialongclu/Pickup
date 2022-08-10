@@ -11,6 +11,7 @@ Pickup is for all people who want to play basketball in Vancouver and it helps c
       * Upload pictures
    * 2-3 stretch requirements (plan to complete at least 1!)
       * Check how busy certain basketball courts are through the map
+      * Error alerts
       * Create teams
      
 Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks!
