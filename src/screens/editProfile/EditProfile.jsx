@@ -27,9 +27,9 @@ export default function EditProfile() {
       setShowAlert(true)
     }
   }, [updateUserAsyncStatus])
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
   };
 
   const dispatch = useDispatch();

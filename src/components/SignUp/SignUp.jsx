@@ -70,7 +70,7 @@ export default function SignUp() {
           value
         );
         break;
-      case "age":
+      case "age": 
         validator.isValidAge = /\-?\d*\.?\d{1,2}/.test(value);
         break;
       case "height":
