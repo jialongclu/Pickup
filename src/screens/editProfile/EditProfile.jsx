@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControl, InputLabel } from "@mui/material";
 import { MenuItem, Select } from "@mui/material";
-import { updateUserAsync, signInAsync } from "../../redux/users/thunks";
+import { updateUserAsync } from "../../redux/users/thunks";
 
 const theme = createTheme();
 
@@ -36,10 +36,6 @@ export default function EditProfile() {
   });
 
   useEffect(() => {
-    const username = localStorage.getItem("email");
-    const password = localStorage.getItem("password");
-    dispatch(signInAsync({ username, password }));
-
     if (userInfo) {
       setInputs({
         firstName: userInfo.firstName,

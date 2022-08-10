@@ -4,7 +4,7 @@ import MatchingCard from "../../components/MatchingCard";
 import FilterBar from "../../components/FilterBar";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useMemo, useRef, useEffect } from "react";
-import { getUsersAsync, signInAsync } from "../../redux/users/thunks";
+import { getUsersAsync } from "../../redux/users/thunks";
 import { createInteraction } from "./useMatching";
 
 import "./MatchingScreen.css";
@@ -27,12 +27,6 @@ function MatchingScreen() {
       default:
     }
   };
-
-  useEffect(() => {
-    const username = localStorage.getItem("email");
-    const password = localStorage.getItem("password");
-    dispatch(signInAsync({ username, password }));
-  }, []);
 
   const filterUserHeight = (filterVal, user, filteredUsers) => {
     switch (filterVal) {
