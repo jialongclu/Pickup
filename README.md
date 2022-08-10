@@ -1,13 +1,3 @@
-
-Clear statement of goals (minimal, standard, stretch) and some indication of what was completed [It is enough to simply put a green check icon or red ‘x’ (or yellow ‘!’) next to each goal.]
-Description on how tech from Units 1-5 are used in the project. See rubric item #2 for a sense of what we’re looking for in this description. [2-3 sentences each]
-Description of ‘Above and Beyond’ functionality. Please give a clear description and in-depth explanation of how you went above and beyond the requirements of the course. This will help us awards marks for rubric item #4.
-Description of Next Steps. What would you do next to further improve the app, or add additional relevant functionality? You may want to reference your in-progress or incomplete goals in this section. [2-3 sentences]
-List of contributions. Highlight areas where each team member contributed significantly. [2-3 sentences per team member]
-
-
-
-
 Pickup is for all people who want to play basketball in Vancouver and it helps connect people who enjoy the sport. Our project will store player profiles, matches (like Tinder), pickup games location and times, and chat messages. Users will be able to edit their profile, match with other people and find basketball games. Users can filter profiles for beginners and gender.
 
 *  Project task requirements:
