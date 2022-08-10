@@ -39,6 +39,7 @@ export default function EditProfile() {
     const username = localStorage.getItem("email");
     const password = localStorage.getItem("password");
     dispatch(signInAsync({ username, password }));
+
     if (userInfo) {
       setInputs({
         firstName: userInfo.firstName,
