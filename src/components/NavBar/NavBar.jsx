@@ -25,7 +25,7 @@ const NavBar = () => {
     { name: "Keep swiping", link: <Link to="/matchingScreen">Keep Swiping</Link> },
     { name: "Logout", link: <Link to="/homePage" onClick={() => {
       navigate("/homePage")
-      dispatch({type: actionTypes.LOGOUT})
+      window.location.reload();
     }}>Logout</Link>}
   ];
 

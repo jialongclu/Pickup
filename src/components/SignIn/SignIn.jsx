@@ -111,7 +111,7 @@ export default function SignIn() {
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link href="/signUp" variant="body2">
+                <Link href="/signUp" onClick={() => navigate("/signUp")} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
