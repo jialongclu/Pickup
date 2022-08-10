@@ -144,7 +144,7 @@ export default function SignUp() {
       }
     }
 
-    const response = await fetch(`https://pickup-server-heroku.herokuapp.com/signUp`, {
+    const response = await fetch(`http://localhost:3001/signUp`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -382,7 +382,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link onClick={() => navigate('/signIn')} variant="body2">
+                <Link onClick={() => navigate("/signIn")} variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

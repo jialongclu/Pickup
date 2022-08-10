@@ -1,23 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import MatchingScreen from './screens/matchingScreen/MatchingScreen.jsx';
-import SignUp from './components/SignUp/SignUp.jsx'
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import MatchingScreen from "./screens/matchingScreen/MatchingScreen.jsx";
+import SignUp from "./components/SignUp/SignUp.jsx";
 import SignIn from "./components/SignIn/SignIn.jsx";
-import EditProfile from './components/EditProfile/EditProfile.jsx';
-import UserMatches from './components/UserMatches/UserMatches.jsx';
-import HomePage from './components/HomePage/HomePage.jsx';
-import "./App.css"
-import NavBar from './components/NavBar';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getUserAsync } from './redux/users/thunks.js';
+import EditProfile from "./components/EditProfile/EditProfile.jsx";
+import UserMatches from "./components/UserMatches/UserMatches.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
+import NavBar from "./components/NavBar";
+
+import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getUserAsync(window.localStorage.getItem('id')));
-  // }, [])
-
   return (
     <>
       <div className="App">

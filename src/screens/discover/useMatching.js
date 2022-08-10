@@ -5,7 +5,7 @@ export async function createInteraction(swipe, userIdTwo) {
     swiped: swipe,
   };
   try {
-    await fetch(`https://pickup-server-heroku.herokuapp.com/interaction`, {
+    await fetch(`http://localhost:3001/interaction`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function createInteraction(swipe, userIdTwo) {
 export async function sanitizeUsers(users) {
   const id = localStorage.getItem("id");
   try {
-    let interactions = await fetch(`https://pickup-server-heroku.herokuapp.com/interaction/${id}`, {
+    let interactions = await fetch(`http://localhost:3001/interaction/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
